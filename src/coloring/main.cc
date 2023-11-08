@@ -6,7 +6,7 @@ void ColorSolver(Graph &g, int *colors);
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {
-    std::cout << "Usage: " << argv[0] << " <graph> [num_gpu(1)] [chunk_size(1024)] [adj_sorted(1)]\n";
+    std::cout << "Usage: " << argv[0] << " <graph> [oriented(1)]\n";
     std::cout << "Example: " << argv[0] << " /graph_inputs/mico/graph\n";
     exit(1);
   }

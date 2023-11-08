@@ -13,5 +13,9 @@ color_gpu_base: $(OBJS) gpu_base.o
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) gpu_base.o -o $@ $(NVLIBS)
 	mv $@ $(BIN)
 
+color_ldf: $(OBJS) ldf_serial.o
+	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJS) ldf_serial.o -o $@ -lgomp
+	mv $A $(BIN)
+
 clean:
 	rm *.o
