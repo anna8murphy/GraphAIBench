@@ -626,8 +626,8 @@ void GraphT<map_vertices, map_edges>::orientation(std::string outfile_prefix) {
   #pragma omp parallel for
   for (vidType src = 0; src < n_vertices; src ++) {
     for (auto dst : N(src)) {
-      if (degrees[dst] > degrees[src] ||
-          (degrees[dst] == degrees[src] && dst > src)) {
+      if (degrees[dst] < degrees[src] ||
+          (degrees[dst] == degrees[src] && dst < src)) {
         new_degrees[src]++;
       }
     }
@@ -687,8 +687,8 @@ void GraphT<map_vertices, map_edges>::orientation(std::string outfile_prefix) {
     auto begin = new_vertices[src];
     eidType offset = 0;
     for (auto dst : N(src)) {
-      if (degrees[dst] > degrees[src] ||
-          (degrees[dst] == degrees[src] && dst > src)) {
+      if (degrees[dst] < degrees[src] ||
+          (degrees[dst] == degrees[src] && dst < src)) {
         new_edges[begin+offset] = dst;
         offset ++;
       }
